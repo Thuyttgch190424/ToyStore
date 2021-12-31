@@ -6,10 +6,6 @@ const app = express();
 app.set('view engine', 'hbs')
 app.use(express.urlencoded({ extended: true }))
 
-
-
-const port = 3000;
-
 app.get('/', async (req, res) => {
     var result = await getAll("Products")
     res.render('home', { products: result })
