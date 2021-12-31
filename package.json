@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tiendung-2000/ToyStore"
+    "url": "git+https://github.com/Thuyttgch190424/ToyStore"
   },
   "author": "Thu Thuy",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tiendung-2000/ToyStore/issues"
+    "url": "https://github.com/Thuyttgch190424/ToyStore/issues"
   },
-  "homepage": "https://github.com/tiendung-2000/ToyStore#readme",
+  "homepage": "https://github.com/Thuyttgch190424/ToyStore#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "bootstrap": "^5.1.3",
