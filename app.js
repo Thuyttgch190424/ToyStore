@@ -79,7 +79,7 @@ app.get('/edit/:id', async (req, res) => {
 app.get('/addproduct', (req, res) => {
     res.render('insert')
 })
-
+//update product
 app.post('/update', async (req, res) => {
     const id = req.body.txtId
     const name = req.body.txtName
@@ -110,7 +110,7 @@ app.post('/update', async (req, res) => {
         res.redirect('/')
     }
 })
-
+//server connecting
 const PORT = process.env.PORT || 5432;
 app.listen(PORT);
 console.log('server running :', PORT);
