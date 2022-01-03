@@ -111,6 +111,6 @@ app.post('/update', async (req, res) => {
     }
 })
 //server connecting
-const PORT = process.env.PORT || 5432;
+const PORT = 5432;
 app.listen(PORT);
 console.log('server running :', PORT);
