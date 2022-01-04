@@ -1,8 +1,8 @@
 const express = require('express')
-const { insertToDB, getAll, deleteObject, getDocumentById, updateDocument, dosearch, category } = require('./databaseHandler')
+const { insertToDB, getAll, deleteObject, getDocumentById, updateDocument, dosearch, category, getDatabase } = require('./databaseHandler')
 
 const app = express();
-
+const {MongoClient,ObjectId} = require('mongodb')
 app.set('view engine', 'hbs')
 app.use(express.urlencoded({ extended: true }))
 
@@ -18,6 +18,9 @@ app.post('/insert', async (req, res) => {
     const category = req.body.txtCategory
     if (name.trim().length == 0) {
         res.render('insert', { nameError: "Please enter Name!" })
+    }
+    else if (price <= 100){
+        res.render('insert', { nameError: null, priceError: "Price must be greater 100 $" })
     }
     else if (price.trim().length == 0) {
         res.render('insert', { nameError: null, priceError: "Please enter Price!" })
@@ -57,9 +60,22 @@ app.post('/search', async (req, res) => {
 //delete one product (id)
 app.get('/delete/:id', async (req, res) => {
     const idValue = req.params.id
+
+    // const dbo = getDatabase();
+    // const result = await dbo.collection('Products').findOne({_id: ObjectId(idValue)})
+
+    const products = await getDocumentById(idValue, "Products")
+    console.log(products.price)
+    var showErr = "Product can not be deleted when price is greater than 100$"
+    if (products.price >100){
+        res.render('home',{showErr: showErr})
+        return
+    } else{
+        await deleteObject(idValue, "Products")
+        res.redirect('/')
+    }
     //viet ham xoa object dua tren id
-    await deleteObject(idValue, "Products")
-    res.redirect('/')
+   
 })
 //category
 app.post('/category', async (req, res) => {

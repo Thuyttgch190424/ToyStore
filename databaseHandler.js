@@ -41,4 +41,4 @@ async function category(condition,collectionName){
     var results = await dbo.collection(collectionName).find({category:categoryCondition}).toArray();
     return results;
 }
-module.exports = {insertToDB,getAll,deleteObject,getDocumentById,updateDocument,dosearch,category}
+module.exports = {insertToDB,getAll,deleteObject,getDocumentById,updateDocument,dosearch,category, getDatabase}
